@@ -1,0 +1,1 @@
+export const SUCCESS_CODE: number[] = [200, 201];

@@ -1,13 +1,13 @@
-const BASE_URL = "https://pokeapi.co/api/v2/";
+const BASE_URL = "url";
 
 export const Api = async <BodyType = object, ReturnType = object>(
   url: string,
   method: string = "GET",
-  body?: BodyType,
+  body?: BodyType
 ): Promise<ReturnType | unknown> => {
   try {
     // Add headers
-    const headers = new Headers();    
+    const headers = new Headers();
     headers.set("Content-Type", "application/json");
 
     // Request options

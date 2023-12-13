@@ -1,33 +1,32 @@
 import { AxiosError, AxiosResponse } from "axios";
-
 import { Api } from "./axios";
 
-const handlerResponseError = (error: AxiosError) => {
-  // Se houver um erro na resposta, trate-o aqui
-  // Você pode personalizar a manipulação de erros de acordo com suas necessidades
+const handleResponseError = (error: AxiosError) => {
+  // If there is an error in the response, handle it here
+  // You can customize error handling according to your needs
   if (error.response) {
-    // O servidor respondeu com um status de erro
-    console.error("Erro na resposta do servidor:", error.response.status);
+    // The server responded with an error status
+    console.error("Server response error:", error.response.status);
 
-    // Por exemplo, você pode lançar uma exceção, mostrar uma mensagem de erro, etc.
+    // For example, you can throw an exception, display an error message, etc.
   } else if (error.request) {
-    // A requisição foi feita, mas não houve resposta do servidor
-    console.error("Sem resposta do servidor");
+    // The request was made, but no response was received from the server
+    console.error("No response from the server");
   } else {
-    // Algo aconteceu ao configurar a requisição que gerou o erro
-    console.error("Erro ao configurar a requisição:", error.message);
+    // Something happened while setting up the request that triggered the error
+    console.error("Error configuring the request:", error.message);
   }
 
-  // Retorna uma Promise rejeitada com o erro
+  // Return a Promise rejected with the error
   return Promise.reject(error);
 };
 
-const handlerResponse = (response: AxiosResponse): AxiosResponse => {
-  // Você pode realizar manipulações nos dados da resposta aqui, se necessário
-  console.log("Resposta bem-sucedida:", response.data);
+const handleResponse = (response: AxiosResponse): AxiosResponse => {
+  // You can perform manipulations on the response data here, if necessary
+  console.log("Successful response:", response.data);
 
-  // Retorna a resposta original
+  // Return the original response
   return response;
 };
 
-Api.interceptors.response.use(handlerResponse, handlerResponseError);
+Api.interceptors.response.use(handleResponse, handleResponseError);

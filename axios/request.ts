@@ -1,23 +1,23 @@
 import { InternalAxiosRequestConfig } from "axios";
 import { Api } from "./axios";
 
-const handlerRequest = (
+const handleRequest = (
   config: InternalAxiosRequestConfig
 ): InternalAxiosRequestConfig => {
-  // Modifique a configuração da solicitação aqui
-  console.log("Enviando solicitação:", config);
+  // Modify the request configuration here
+  console.log("Sending request:", config);
 
-  // Você pode adicionar cabeçalhos adicionais, modificar dados da solicitação, etc.
+  // You can add additional headers, modify request data, etc.
 
   return config;
 };
 
-const handlerRequestError = (error: unknown): Promise<never> => {
-  // Se houver um erro na configuração da solicitação, trate-o aqui
-  console.error('Erro na configuração da solicitação:', error);
+const handleRequestError = (error: unknown): Promise<never> => {
+  // If there is an error in the request configuration, handle it here
+  console.error("Error in request configuration:", error);
 
-  // Retorna uma Promise rejeitada com o erro
+  // Return a Promise rejected with the error
   return Promise.reject(error);
 };
 
-Api.interceptors.request.use(handlerRequest, handlerRequestError);
+Api.interceptors.request.use(handleRequest, handleRequestError);

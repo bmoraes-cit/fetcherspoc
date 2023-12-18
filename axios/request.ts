@@ -4,10 +4,16 @@ import { Api } from "./axios";
 const handleRequest = (
   config: InternalAxiosRequestConfig
 ): InternalAxiosRequestConfig => {
+  const { headers } = config;
   // Modify the request configuration here
   console.log("Sending request:", config);
 
   // You can add additional headers, modify request data, etc.
+  // const token = sessionStorage.getItem("tokenProfessionalUsers") || "";
+
+  // if (token) {
+  //   headers.set("jwt-token", token);
+  // }
 
   return config;
 };
